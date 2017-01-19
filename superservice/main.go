@@ -11,5 +11,6 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", helloHandler)
-	http.ListenAndServe(":6000", nil)
+	fmt.Println("starting server")
+	http.ListenAndServe("0.0.0.0:6600", nil)
 }

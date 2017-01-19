@@ -33,7 +33,7 @@ superservice:
 
 superservice-lb:
   ports:
-  - 6000:6000
+  - 6600:6600
   tty: true
   image: rancher/load-balancer-service
   labels:
