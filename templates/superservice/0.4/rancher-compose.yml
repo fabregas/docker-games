@@ -6,9 +6,6 @@ superservice:
     scale: 2
     retain_ip: true
 
-binsservice:
-    scale: 2
-
 superservice-lb:
   scale: 1
   load_balancer_config:
