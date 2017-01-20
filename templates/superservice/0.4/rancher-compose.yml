@@ -1,0 +1,21 @@
+
+.catalog:
+    version: 0.3
+
+superservice:
+    scale: 2
+    retain_ip: true
+
+binsservice:
+    scale: 2
+
+superservice-lb:
+  scale: 1
+  load_balancer_config:
+    haproxy_config: {}
+  health_check:
+    port: 42
+    interval: 2000
+    unhealthy_threshold: 3
+    healthy_threshold: 2
+    response_timeout: 2000

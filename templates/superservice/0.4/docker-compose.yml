@@ -1,31 +1,14 @@
 
-superservice-volume:
-  net: none
-  labels:
-    io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
-    io.rancher.container.hostname_override: container_name
-    io.rancher.container.start_once: true
-  environment:
-    - SERVICE_UID=10003
-    - SERVICE_GID=10003
-    - SERVICE_VOLUME=/data
-  volumes:
-    - /data
-  volume_driver: local
-  image: rawmind/alpine-volume:0.0.2-1
-
-
 superservice:
   image: fabregas/superservice:latest
   labels:
     io.rancher.container.pull_image: always      
     io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     io.rancher.container.hostname_override: container_name
-    io.rancher.sidekicks: superservice-volume
   dns_search:
     - rancher.internal
-  volumes_from:
-    - superservice-volume
+  volumes:
+    - /volumes/$${container_name}:/data
 
 
 superservice-lb:
