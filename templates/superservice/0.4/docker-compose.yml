@@ -8,7 +8,7 @@ superservice:
   dns_search:
     - rancher.internal
   volumes:
-    - /volumes/$${container_name}:/data
+    - /volumes/$${service_name}:/data
 
 
 superservice-lb:
