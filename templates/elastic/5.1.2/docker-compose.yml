@@ -22,6 +22,10 @@ elasticsearch-base-master:
     - es_master_bin:/opt/rancher/bin
   entrypoint:
     - /opt/rancher/bin/run.sh
+  ulimits:
+    memlock:
+      soft: -1
+      hard: -1
 
 
 elasticsearch-datanodes:
