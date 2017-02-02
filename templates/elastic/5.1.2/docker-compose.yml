@@ -57,6 +57,10 @@ elasticsearch-base-datanode:
     - es_conf:/usr/share/elasticsearch/config
     - es_bin:/opt/rancher/bin
   net: "container:elasticsearch-datanodes"
+  ulimits:
+    memlock:
+      soft: -1
+      hard: -1
 
 
 
