@@ -1,0 +1,47 @@
+.catalog:
+  name: "Elasticsearch"
+  version: "5.1.2"
+  description: "Elasticsearch. You know, for search"
+  questions:
+    - variable: cluster_name
+      description: "Unique name to assign to your Elasticsearch cluster."
+      label: "Cluster Name"
+      type: "string"
+      required: true
+      default: "es"
+
+elasticsearch-masters:
+  metadata:
+    elasticsearch:
+      yml:
+        cluster.name: "${cluster_name}"
+        node.name: "$${HOSTNAME}"
+        node.data: "false"
+        node.master: "true"
+        network.host: "_site_"
+        xpack.security.authc.anonymous.roles: superuser 
+        xpack.security.authc.anonymous.authz_exception: true 
+
+
+elasticsearch-datanodes:
+  metadata:
+    elasticsearch:
+      yml:
+        cluster.name: "${cluster_name}"
+        node.name: "$${HOSTNAME}"
+        node.data: "true"
+        node.master: "false"
+        http.enabled: "false"
+        network.host: "_site_"
+        xpack.security.authc.anonymous.roles: superuser 
+        xpack.security.authc.anonymous.authz_exception: true 
+
+kibana4:
+  scale_policy:
+    min: 1
+    max: 1
+
+kopf:
+  scale_policy:
+    min: 1
+    max: 1

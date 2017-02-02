@@ -1,0 +1,4 @@
+name: Elasticsearch
+description: |
+    Elasticsearch, you know for search!  
+version: 5.1.2
